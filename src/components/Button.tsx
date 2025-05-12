@@ -25,7 +25,7 @@ const buttonTypeStyles: Record<ButtonType, string> = {
   secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 active:bg-gray-400',
 };
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
   size = 'medium',
@@ -79,3 +79,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default Button;
