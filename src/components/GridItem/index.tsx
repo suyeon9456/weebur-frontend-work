@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
+import { ProductDisplay } from '@/models/domain/product';
 
-interface GridItemProps {
-  title: string;
-  description: string;
-  thumbnail: string;
-  rating: string;
-  review: string;
-}
+type GridItemProps = Pick<
+  ProductDisplay,
+  'title' | 'description' | 'thumbnail' | 'rating' | 'review'
+>;
 
 const GridItem: React.FC<GridItemProps> = ({
   title,
