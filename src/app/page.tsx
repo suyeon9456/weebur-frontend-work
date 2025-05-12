@@ -1,8 +1,8 @@
+import { getProducts } from '@/lib/api/products';
 import Products from './Products';
 
 export default async function Home() {
-  const response = await fetch('https://dummyjson.com/products?limit=20&skip=0');
-  const initialProducts = await response.json();
+  const initialProducts = await getProducts({ skip: 0, limit: 20 });
 
   return (
     <div>
