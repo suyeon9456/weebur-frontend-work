@@ -1,13 +1,11 @@
+import { ProductDisplay } from '@/models/domain/product';
 import Image from 'next/image';
 import React from 'react';
 
-interface ListItemProps {
-  title: string;
-  description: string;
-  thumbnail: string;
-  rating: string;
-  review: string;
-}
+type ListItemProps = Pick<
+  ProductDisplay,
+  'title' | 'description' | 'thumbnail' | 'rating' | 'review'
+>;
 
 const ListItem: React.FC<ListItemProps> = ({
   title,
