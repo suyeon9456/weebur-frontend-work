@@ -22,7 +22,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <Image src={thumbnail} alt={title} className="rounded-md" width={235} height={235} />
       </div>
       <div className="flex-1">
-        <h3 className="text-lg font-bold">{title}</h3>
+        <h3 className="text-title-3 font-bold">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
       <div className="w-[235px]">
