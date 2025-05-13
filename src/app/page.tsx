@@ -1,6 +1,5 @@
 import { getProducts } from '@/lib/api/products';
 import Products from './Products';
-import SearchForm from './SearchForm';
 
 export default async function Home({
   searchParams,
@@ -13,7 +12,6 @@ export default async function Home({
 
   return (
     <div>
-      <SearchForm />
       <Products
         initialProducts={initialProducts ?? { products: [], total: 0, skip: 0, limit: 0 }}
       />
