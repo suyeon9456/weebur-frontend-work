@@ -36,9 +36,8 @@ const SearchForm = ({
       action={formAction}
       className={`w-full max-w-[600px] mx-auto flex gap-2 flex-row items-center justify-center bg-white rounded-full border border-[#e5e8eb] shadow-[0_0_10px_0_rgba(0,0,0,0.1)] cursor-pointer ${className}`}
       role="search"
-      aria-label="상품 검색"
     >
-      <Input placeholder={placeholder} name="q" defaultValue={state.q} />
+      <Input placeholder={placeholder} name="q" defaultValue={state.q} aria-label="상품 검색" />
       <Button type="submit" disabled={isPending}>
         검색
       </Button>
