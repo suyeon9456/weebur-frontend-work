@@ -6,7 +6,9 @@ export default async function Home() {
 
   return (
     <div>
-      <Products initialProducts={initialProducts.products ?? []} />
+      <Products
+        initialProducts={initialProducts ?? { products: [], total: 0, skip: 0, limit: 0 }}
+      />
     </div>
   );
 }
