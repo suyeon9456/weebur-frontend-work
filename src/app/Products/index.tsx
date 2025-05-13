@@ -4,14 +4,19 @@ import ListItem from '@/components/ListItem/Index';
 import useInfiniteProducts from '@/hooks/useInfiniteProducts';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { ProductListResponse, Product } from '@/models/api/product';
+import { useSearchParams } from 'next/navigation';
 
 interface ProductsProps {
   initialProducts: ProductListResponse;
 }
 
 const Products = ({ initialProducts }: ProductsProps) => {
+  const searchParams = useSearchParams();
   const { products, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteProducts({
     initialProducts,
+    query: {
+      q: searchParams.get('q') ?? undefined,
+    },
   });
   const observerRef = useIntersectionObserver({
     enabled: hasNextPage && !isFetchingNextPage,
@@ -20,7 +25,7 @@ const Products = ({ initialProducts }: ProductsProps) => {
   });
 
   return (
-    <div>
+    <div className="w-full">
       <ul>
         {products.map((product: Product) => (
           <ListItem

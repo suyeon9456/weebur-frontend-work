@@ -5,7 +5,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonType = 'primary' | 'secondary';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
+  onClick?: () => void;
   size?: ButtonSize;
   buttonType?: ButtonType;
   isLoading?: boolean;
