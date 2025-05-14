@@ -21,11 +21,11 @@ const CheckBoxButton = ({
   return (
     <>
       <label
-        className={`px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer
+        className={`px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer font-bold
             ${
               isChecked
-                ? 'bg-[#e9eefe] text-gray-700 border border-[#4175f5] text-[#4175f5]'
-                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                ? 'bg-transparent text-[##202731]'
+                : 'bg-white text-[#a9b0ba] hover:text-[#6b7788]'
             } ${className}`}
       >
         {children}

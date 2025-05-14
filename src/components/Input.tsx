@@ -1,10 +1,13 @@
-import React, { InputHTMLAttributes } from 'react';
+'use client';
+
+import React, { InputHTMLAttributes, useCallback, useState } from 'react';
 import Image from 'next/image';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   showSearchIcon?: boolean;
   showCloseIcon?: boolean;
+  defaultValue?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -12,8 +15,17 @@ const Input: React.FC<InputProps> = ({
   showSearchIcon = true,
   showCloseIcon = true,
   placeholder,
+  defaultValue,
   ...props
 }) => {
+  const [value, setValue] = useState<string>(defaultValue ?? '');
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  }, []);
+
+  const clearInput = useCallback(() => {
+    setValue('');
+  }, []);
   return (
     <div className="flex flex-col gap-1 w-full">
       <div
@@ -36,9 +48,15 @@ const Input: React.FC<InputProps> = ({
             ${showSearchIcon ? 'pr-12' : ''}
             ${className}
           `}
+          value={value}
+          onChange={handleChange}
           {...props}
         />
-        {showCloseIcon && <Image src="/icons/close.svg" alt="닫기 아이콘" width={24} height={24} />}
+        {showCloseIcon && (
+          <button onClick={clearInput} className="cursor-pointer">
+            <Image src="/icons/close.svg" alt="닫기 아이콘" width={24} height={24} />
+          </button>
+        )}
       </div>
     </div>
   );

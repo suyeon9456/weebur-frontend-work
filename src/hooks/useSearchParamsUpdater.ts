@@ -20,6 +20,7 @@ const useSearchParamsUpdater = () => {
   };
 
   return {
+    searchParams,
     updateSearchParams,
   };
 };
