@@ -1,4 +1,4 @@
-import { ProductLisRequest } from '@/models/api/product';
+import { ProductListRequest } from '@/models/api/product';
 
 export async function getProducts({
   skip = 0,
@@ -6,7 +6,7 @@ export async function getProducts({
   q,
   sortBy,
   order,
-}: Omit<ProductLisRequest, 'q'> & Partial<Pick<ProductLisRequest, 'q'>>) {
+}: Omit<ProductListRequest, 'q'> & Partial<Pick<ProductListRequest, 'q'>>) {
   const searchParams = new URLSearchParams({ limit: limit.toString(), skip: skip.toString() });
   if (sortBy != null && order != null) {
     searchParams.set('sortBy', sortBy);
@@ -26,7 +26,7 @@ export async function getProducts({
   return response.json();
 }
 
-export async function getSearchProducts({ skip = 0, limit = 20, q }: ProductLisRequest) {
+export async function getSearchProducts({ skip = 0, limit = 20, q }: ProductListRequest) {
   const response = await fetch(
     `https://dummyjson.com/products/search?q=${q}&limit=${limit}&skip=${skip}`
   );

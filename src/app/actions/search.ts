@@ -1,6 +1,6 @@
 'use server';
 
-import { ProductLisRequest } from '@/models/api/product';
+import { ProductFilter } from '@/models/domain/product';
 
 export interface SearchFormState {
   q?: string;
@@ -10,7 +10,7 @@ export interface SearchFormState {
 export async function handleSearchAction(
   prevState: SearchFormState,
   formData: FormData
-): Promise<Partial<Pick<ProductLisRequest, 'q' | 'sortBy' | 'order'>>> {
+): Promise<ProductFilter> {
   const q = formData.get('q')?.toString() === '' ? undefined : formData.get('q')?.toString();
   const sortBy = formData.get('sortBy')?.toString() === 'rating' ? 'rating' : undefined;
   const order = sortBy !== undefined ? 'desc' : undefined;

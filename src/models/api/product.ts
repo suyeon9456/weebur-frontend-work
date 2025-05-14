@@ -51,7 +51,7 @@ export type ProductListResponse = {
   limit: number;
 };
 
-export interface ProductLisRequest {
+export interface ProductListRequest {
   skip: number;
   limit: number;
   q: string;
