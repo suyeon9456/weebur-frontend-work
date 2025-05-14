@@ -46,6 +46,11 @@ const Products = ({ initialProducts }: ProductsProps) => {
             ))}
           </ul>
           <div ref={observerRef} style={{ height: 1 }} />
+          {hasNextPage === false && (
+            <div className="flex justify-center items-center py-[50px] text-gray-500 text-body-2">
+              더 이상 불러올 수 없습니다.
+            </div>
+          )}
         </>
       )}
     </div>
