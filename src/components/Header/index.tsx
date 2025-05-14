@@ -5,8 +5,8 @@ import SearchForm from '@/app/SearchForm';
 
 const Header: React.FC = () => {
   return (
-    <header className="flex flex-col justify-center items-center gap-4 pt-5 pb-5 border-b border-[#E0E0E0] sticky top-0 bg-white">
-      <div className="flex flex-start w-[90%] max-w-[1200px] h-[48px] items-center">
+    <header className="sticky top-0 flex flex-col items-center justify-center gap-4 border-b border-[#E0E0E0] bg-white pt-5 pb-5">
+      <div className="flex-start flex h-[48px] w-[90%] max-w-[1200px] items-center">
         <Link href="/">
           <Logo />
         </Link>

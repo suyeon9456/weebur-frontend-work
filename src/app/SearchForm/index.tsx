@@ -34,7 +34,7 @@ const SearchForm = ({
   return (
     <form
       action={formAction}
-      className={`w-auto max-w-[1200px] mx-auto flex gap-2 flex-row items-center justify-center bg-white rounded-full border border-[#e5e8eb] shadow-[0_0_10px_0_rgba(0,0,0,0.1)] cursor-pointer ${className}`}
+      className={`mx-auto flex w-auto max-w-[1200px] cursor-pointer flex-row items-center justify-center gap-2 rounded-full border border-[#e5e8eb] bg-white shadow-[0_0_10px_0_rgba(0,0,0,0.1)] ${className}`}
       role="search"
     >
       <Input
@@ -45,7 +45,7 @@ const SearchForm = ({
         className="font-bold"
       />
       <div className="flex flex-row items-center gap-2">
-        <CheckBoxButton name="sortBy" value="rating" className="w-[80px] h-[40px] text-center">
+        <CheckBoxButton name="sortBy" value="rating" className="h-[40px] w-[80px] text-center">
           별점순
         </CheckBoxButton>
       </div>
@@ -53,7 +53,7 @@ const SearchForm = ({
         type="submit"
         disabled={isPending}
         size="large"
-        className="rounded-full mr-[10px] w-[150px] font-bold"
+        className="mr-[10px] w-[150px] rounded-full font-bold"
       >
         검색
       </Button>

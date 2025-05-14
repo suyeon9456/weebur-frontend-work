@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
         alt="로고"
         width={123}
         height={23}
-        className="max-w-[1200px] w-[90%]"
+        className="w-[90%] max-w-[1200px]"
       />
     </div>
   );
