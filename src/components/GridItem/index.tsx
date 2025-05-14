@@ -15,13 +15,13 @@ const GridItem: React.FC<GridItemProps> = ({
   review,
 }: GridItemProps) => {
   return (
-    <li className="block w-[276px] h-[308px] bg-white rounded-lg overflow-hidden text-[rgb(32,39,49)] no-underline cursor-pointer">
+    <li className="grid-item">
       <div className="w-[276px] h-[198px]">
         <Image
           src={thumbnail}
           alt={title}
           className="w-[276px] h-[198px] rounded-md"
-          width={235}
+          width={276}
           height={198}
         />
       </div>
