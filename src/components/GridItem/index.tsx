@@ -21,7 +21,7 @@ const GridItem: React.FC<GridItemProps> = ({
           src={thumbnail}
           alt={title}
           className="w-[276px] h-[198px] rounded-md"
-          width={235}
+          width={276}
           height={198}
         />
       </div>
