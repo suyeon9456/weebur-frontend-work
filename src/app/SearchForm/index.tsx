@@ -20,7 +20,7 @@ const SearchForm = ({
   placeholder = '찾고 싶은 상품을 검색해보세요',
   className = '',
 }: SearchFormProps) => {
-  const { updateSearchParams } = useSearchParamsUpdater();
+  const { searchParams, updateSearchParams } = useSearchParamsUpdater();
 
   const [state, formAction, isPending] = useActionState<SearchFormValues, FormData>(
     async (prevState, formData) => {
@@ -28,7 +28,7 @@ const SearchForm = ({
       updateSearchParams({ q: result.q, sortBy: result.sortBy, order: result.order });
       return result;
     },
-    { q: undefined, sortBy: undefined }
+    { q: searchParams.get('q') ?? undefined, sortBy: searchParams.get('sortBy') ?? undefined }
   );
 
   return (
