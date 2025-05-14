@@ -8,10 +8,13 @@ type SearchParams = {
   order?: string | string[];
 };
 
-export default async function Home({ searchParams }: { searchParams: SearchParams }) {
-  const qValue = getSingleValue(searchParams?.q);
-  const sortByValue = getSingleValue(searchParams?.sortBy);
-  const orderValue = getSingleValue(searchParams?.order);
+export default async function Home(props: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const query = await props?.searchParams;
+  const qValue = getSingleValue(query?.q);
+  const sortByValue = getSingleValue(query?.sortBy);
+  const orderValue = getSingleValue(query?.order);
 
   const initialProducts = await getProducts({
     skip: 0,
