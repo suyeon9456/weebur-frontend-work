@@ -1,14 +1,17 @@
+'use client';
+
 import GridItem from '@/components/GridItem';
 import ListItem from '@/components/ListItem/Index';
 import { getDailyLayout } from '@/lib/utils';
 import { Product } from '@/models/api/product';
+import { useMemo } from 'react';
 
 interface ProductListProps {
   products: Product[];
 }
 
 const ProductList = ({ products }: ProductListProps) => {
-  const layout = getDailyLayout();
+  const layout = useMemo(() => getDailyLayout(), []);
 
   if (layout === 'grid') {
     return (

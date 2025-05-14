@@ -13,10 +13,8 @@ export const getTodayKey = (): string => {
   const today = new Date();
   return today.toISOString().slice(0, 10);
 };
-export const getDailyLayout = (): Layout => {
-  if (typeof window === 'undefined') {
-    return getRandomLayout();
-  }
+export const getDailyLayout = (): Layout | undefined => {
+  if (typeof window === 'undefined') return undefined;
 
   const key = `layout-${getTodayKey()}`;
   const stored = localStorage.getItem(key) as Layout | null;
