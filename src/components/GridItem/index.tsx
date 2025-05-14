@@ -20,7 +20,7 @@ const GridItem: React.FC<GridItemProps> = ({
         <Image
           src={thumbnail}
           alt={title}
-          className="w-[276px] h-[198px] rounded-md my-[0px] mx-['auto'] object-none transition-transform duration-300 hover:scale-110"
+          className="w-[276px] h-[198px] thumbnail"
           width={276}
           height={198}
         />
@@ -30,15 +30,17 @@ const GridItem: React.FC<GridItemProps> = ({
         <p className="text-sm text-gray-600 truncate">{description}</p>
       </div>
       <div className="flex gap-2 p-[14px]">
-        <div className="inline-flex items-center gap-1">
+        <div className="product-info">
           <span className="text-body-2">
             <Image src="/icons/review.svg" width={20} height={20} alt="리뷰 아이콘" />
           </span>
           <span className="text-body-2">리뷰 {review.toLocaleString()}</span>
         </div>
-        <div className="inline-flex items-center gap-1">
-          <span className="text-body-2">별점</span>
-          <span className="text-body-2">{rating}</span>
+        <div className="product-info">
+          <span className="text-body-2">
+            <Image src="/icons/rating.svg" width={18} height={18} alt="별점 아이콘" />
+          </span>
+          <span className="text-body-2">별점 {rating}</span>
         </div>
       </div>
     </li>
