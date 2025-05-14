@@ -50,7 +50,14 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button className={buttonStyles} disabled={disabled || isLoading} {...props} onClick={onClick}>
+    <button
+      className={buttonStyles}
+      disabled={disabled || isLoading}
+      {...props}
+      onClick={onClick}
+      aria-busy={isLoading}
+      aria-disabled={disabled || isLoading}
+    >
       {isLoading && (
         <svg
           className="animate-spin -ml-1 mr-2 h-4 w-4"
@@ -73,9 +80,7 @@ const Button: React.FC<ButtonProps> = ({
           />
         </svg>
       )}
-      {!isLoading && leftIcon && <span className="mr-2">{leftIcon}</span>}
       {children}
-      {!isLoading && rightIcon && <span className="ml-2">{rightIcon}</span>}
     </button>
   );
 };
