@@ -1,10 +1,11 @@
 import { getProducts } from '@/lib/api/products';
 import { productsQueryKey } from '@/lib/queryKeyFactory';
-import { ProductListResponse } from '@/models/api/product';
+import { ProductLisRequest, ProductListResponse } from '@/models/api/product';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 interface UseInfiniteProductsParams {
   initialProducts: ProductListResponse;
+  query: Partial<Pick<ProductLisRequest, 'q' | 'sortBy' | 'order'>>;
 }
 
 interface UseInfiniteProductsReturn {
@@ -18,11 +19,12 @@ interface UseInfiniteProductsReturn {
 
 const useInfiniteProducts = ({
   initialProducts,
+  query,
 }: UseInfiniteProductsParams): UseInfiniteProductsReturn => {
   const { data, isLoading, error, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: productsQueryKey.base,
-      queryFn: ({ pageParam = 1 }) => getProducts({ skip: pageParam * 20, limit: 20 }),
+      queryKey: productsQueryKey.search(query),
+      queryFn: ({ pageParam = 1 }) => getProducts({ skip: pageParam * 20, limit: 20, ...query }),
       getNextPageParam: ({ total, skip, limit }) => {
         const isEnd = total <= skip + limit * 2;
         if (isEnd === true) return undefined;
@@ -33,7 +35,7 @@ const useInfiniteProducts = ({
         pages: [initialProducts],
         pageParams: [1],
       },
-      staleTime: 1000 * 60 * 5,
+      staleTime: 1000 * 60 * 1,
     });
 
   const products = data?.pages.flatMap(page => page.products) ?? [];
