@@ -44,7 +44,7 @@
     @apply block h-[308px] w-[276px] cursor-pointer overflow-hidden rounded-lg bg-white text-[rgb(32,39,49)] no-underline;
   }
   .thumbnail {
-    @apply mx-['auto'] my-[0px] rounded-md object-none transition-transform duration-300 hover:scale-110;
+    @apply mx-['auto'] my-[0px] rounded-md transition-transform duration-300 hover:scale-110;
   }
   .product-info {
     @apply inline-flex items-center gap-1;
