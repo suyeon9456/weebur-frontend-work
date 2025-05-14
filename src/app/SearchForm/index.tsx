@@ -37,7 +37,13 @@ const SearchForm = ({
       className={`w-auto max-w-[1200px] mx-auto flex gap-2 flex-row items-center justify-center bg-white rounded-full border border-[#e5e8eb] shadow-[0_0_10px_0_rgba(0,0,0,0.1)] cursor-pointer ${className}`}
       role="search"
     >
-      <Input placeholder={placeholder} name="q" defaultValue={state.q} aria-label="상품 검색" />
+      <Input
+        placeholder={placeholder}
+        name="q"
+        defaultValue={state.q}
+        aria-label="상품 검색"
+        className="font-bold"
+      />
       <div className="flex flex-row items-center gap-2">
         <CheckBoxButton name="sortBy" value="rating" className="w-[80px] h-[40px] text-center">
           별점순
@@ -47,7 +53,7 @@ const SearchForm = ({
         type="submit"
         disabled={isPending}
         size="large"
-        className="rounded-full mr-[10px] w-[150px]"
+        className="rounded-full mr-[10px] w-[150px] font-bold"
       >
         검색
       </Button>
