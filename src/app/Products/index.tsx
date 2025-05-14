@@ -34,7 +34,7 @@ const Products = ({ initialProducts }: ProductsProps) => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-[60px]">
       <ProductList products={products} />
       <div ref={observerRef} style={{ height: 1 }} />
       <EndMessage isVisible={!hasNextPage} />
