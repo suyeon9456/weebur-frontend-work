@@ -43,6 +43,12 @@
   .grid-item {
     @apply block w-[276px] h-[308px] bg-white rounded-lg overflow-hidden text-[rgb(32,39,49)] no-underline cursor-pointer;
   }
+  .thumbnail {
+    @apply rounded-md my-[0px] mx-['auto'] object-none transition-transform duration-300 hover:scale-110;
+  }
+  .product-info {
+    @apply inline-flex items-center gap-1;
+  }
 }
 
 body {
@@ -50,6 +56,5 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
