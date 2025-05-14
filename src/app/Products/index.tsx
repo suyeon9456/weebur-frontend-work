@@ -5,6 +5,7 @@ import useInfiniteProducts from '@/hooks/useInfiniteProducts';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { ProductListResponse, Product } from '@/models/api/product';
 import { useSearchParams } from 'next/navigation';
+import Empty from './Empty';
 
 interface ProductsProps {
   initialProducts: ProductListResponse;
@@ -28,19 +29,25 @@ const Products = ({ initialProducts }: ProductsProps) => {
 
   return (
     <div className="w-full">
-      <ul>
-        {products.map((product: Product) => (
-          <ListItem
-            key={product.id}
-            title={product.title}
-            description={product.description}
-            thumbnail={product.thumbnail}
-            rating={product.rating}
-            review={product.reviews.length}
-          />
-        ))}
-      </ul>
-      <div ref={observerRef} style={{ height: 1 }} />
+      {products.length === 0 ? (
+        <Empty />
+      ) : (
+        <>
+          <ul>
+            {products.map((product: Product) => (
+              <ListItem
+                key={product.id}
+                title={product.title}
+                description={product.description}
+                thumbnail={product.thumbnail}
+                rating={product.rating}
+                review={product.reviews.length}
+              />
+            ))}
+          </ul>
+          <div ref={observerRef} style={{ height: 1 }} />
+        </>
+      )}
     </div>
   );
 };
