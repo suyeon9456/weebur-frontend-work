@@ -6,5 +6,6 @@
   "printWidth": 100,
   "bracketSpacing": true,
   "arrowParens": "avoid",
-  "jsxSingleQuote": false
+  "jsxSingleQuote": false,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

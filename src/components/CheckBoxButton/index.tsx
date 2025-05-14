@@ -21,12 +21,11 @@ const CheckBoxButton = ({
   return (
     <>
       <label
-        className={`px-4 py-2 rounded-md transition-colors duration-200 cursor-pointer font-bold
-            ${
-              isChecked
-                ? 'bg-transparent text-[##202731]'
-                : 'bg-white text-[#a9b0ba] hover:text-[#6b7788]'
-            } ${className}`}
+        className={`cursor-pointer rounded-md px-4 py-2 font-bold transition-colors duration-200 ${
+          isChecked
+            ? 'bg-transparent text-[##202731]'
+            : 'bg-white text-[#a9b0ba] hover:text-[#6b7788]'
+        } ${className}`}
       >
         {children}
         <input type="checkbox" onChange={handleChange} {...props} className="hidden" />

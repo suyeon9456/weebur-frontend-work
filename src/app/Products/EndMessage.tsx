@@ -8,7 +8,7 @@ const EndMessage = ({ isVisible }: EndMessageProps) => {
   if (!isVisible) return <></>;
 
   return (
-    <div className="flex justify-center items-center py-[50px] text-gray-500 text-body-2">
+    <div className="text-body-2 flex items-center justify-center py-[50px] text-gray-500">
       {END_MESSAGE}
     </div>
   );

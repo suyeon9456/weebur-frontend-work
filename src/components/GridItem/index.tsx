@@ -15,19 +15,19 @@ const GridItem: React.FC<GridItemProps> = ({
   review,
 }: GridItemProps) => {
   return (
-    <li className="grid-item border border-[#e0e0e0] rounded-[8px]">
-      <div className="w-full h-[198px] overflow-hidden">
+    <li className="grid-item rounded-[8px] border border-[#e0e0e0]">
+      <div className="h-[198px] w-full overflow-hidden">
         <Image
           src={thumbnail}
           alt={title}
-          className="w-[276px] h-[198px] thumbnail"
+          className="thumbnail h-[198px] w-[276px]"
           width={276}
           height={198}
         />
       </div>
       <div className="p-[14px]">
         <h4 className="text-title-4 font-bold">{title}</h4>
-        <p className="text-sm text-gray-600 truncate">{description}</p>
+        <p className="truncate text-sm text-gray-600">{description}</p>
       </div>
       <div className="flex gap-2 p-[14px]">
         <div className="product-info">

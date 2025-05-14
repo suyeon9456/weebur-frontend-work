@@ -23,7 +23,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <h3 className="text-title-3 font-bold">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
       </div>
-      <div className="w-[235px] flex items-center gap-2">
+      <div className="flex w-[235px] items-center gap-2">
         <div className="product-info">
           <span>
             <Image src="/icons/review.svg" width={20} height={20} alt="리뷰 아이콘" />
