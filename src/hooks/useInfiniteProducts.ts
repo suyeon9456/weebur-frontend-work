@@ -1,11 +1,12 @@
 import { getProducts } from '@/lib/api/products';
 import { productsQueryKey } from '@/lib/queryKeyFactory';
-import { ProductLisRequest, ProductListResponse } from '@/models/api/product';
+import { ProductListResponse } from '@/models/api/product';
+import { ProductFilter } from '@/models/domain/product';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 interface UseInfiniteProductsParams {
   initialProducts: ProductListResponse;
-  query: Partial<Pick<ProductLisRequest, 'q' | 'sortBy' | 'order'>>;
+  query: ProductFilter;
 }
 
 interface UseInfiniteProductsReturn {
