@@ -26,7 +26,7 @@ const useInfiniteProducts = ({
       queryKey: productsQueryKey.search(query),
       queryFn: ({ pageParam = 1 }) => getProducts({ skip: pageParam * 20, limit: 20, ...query }),
       getNextPageParam: ({ total, skip, limit }) => {
-        const isEnd = total <= skip + limit * 2;
+        const isEnd = total <= skip + limit;
         if (isEnd === true) return undefined;
         return (skip + limit) / limit;
       },

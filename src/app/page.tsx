@@ -9,9 +9,9 @@ type SearchParams = {
 };
 
 export default async function Home({ searchParams }: { searchParams: SearchParams }) {
-  const qValue = getSingleValue(searchParams.q);
-  const sortByValue = getSingleValue(searchParams.sortBy);
-  const orderValue = getSingleValue(searchParams.order);
+  const qValue = getSingleValue(searchParams?.q);
+  const sortByValue = getSingleValue(searchParams?.sortBy);
+  const orderValue = getSingleValue(searchParams?.order);
 
   const initialProducts = await getProducts({
     skip: 0,

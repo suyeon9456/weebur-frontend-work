@@ -1,10 +1,12 @@
 'use client';
 
-import ListItem from '@/components/ListItem/Index';
 import useInfiniteProducts from '@/hooks/useInfiniteProducts';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import { ProductListResponse, Product } from '@/models/api/product';
+import { ProductListResponse } from '@/models/api/product';
 import { useSearchParams } from 'next/navigation';
+import Empty from './Empty';
+import EndMessage from './EndMessage';
+import ProductList from './ProductList';
 
 interface ProductsProps {
   initialProducts: ProductListResponse;
@@ -20,27 +22,22 @@ const Products = ({ initialProducts }: ProductsProps) => {
       order: (searchParams.get('order') as 'desc') ?? undefined,
     },
   });
+
   const observerRef = useIntersectionObserver({
     enabled: hasNextPage && !isFetchingNextPage,
     onIntersect: () => fetchNextPage(),
     delay: 1000,
   });
 
+  if (products.length === 0) {
+    return <Empty />;
+  }
+
   return (
     <div className="w-full">
-      <ul>
-        {products.map((product: Product) => (
-          <ListItem
-            key={product.id}
-            title={product.title}
-            description={product.description}
-            thumbnail={product.thumbnail}
-            rating={product.rating}
-            review={product.reviews.length}
-          />
-        ))}
-      </ul>
+      <ProductList products={products} />
       <div ref={observerRef} style={{ height: 1 }} />
+      <EndMessage isVisible={!hasNextPage} />
     </div>
   );
 };
