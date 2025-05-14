@@ -16,6 +16,8 @@ const Products = ({ initialProducts }: ProductsProps) => {
     initialProducts,
     query: {
       q: searchParams.get('q') ?? undefined,
+      sortBy: searchParams.get('sortBy') ?? undefined,
+      order: (searchParams.get('order') as 'desc') ?? undefined,
     },
   });
   const observerRef = useIntersectionObserver({

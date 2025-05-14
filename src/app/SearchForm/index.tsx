@@ -5,18 +5,18 @@ import useSearchParamsUpdater from '@/hooks/useSearchParamsUpdater';
 import { useActionState } from 'react';
 import { handleSearchAction } from '../actions/search';
 import Button from '@/components/Button';
+import CheckBoxButton from '@/components/CheckBoxButton';
 interface SearchFormValues {
-  q: string;
+  q?: string;
+  sortBy?: string;
 }
 
 interface SearchFormProps {
-  initialValue?: string;
   placeholder?: string;
   className?: string;
 }
 
 const SearchForm = ({
-  initialValue = '',
   placeholder = '찾고 싶은 상품을 검색해보세요',
   className = '',
 }: SearchFormProps) => {
@@ -25,10 +25,10 @@ const SearchForm = ({
   const [state, formAction, isPending] = useActionState<SearchFormValues, FormData>(
     async (prevState, formData) => {
       const result = await handleSearchAction(prevState, formData);
-      updateSearchParams({ q: result.q });
+      updateSearchParams({ q: result.q, sortBy: result.sortBy, order: result.order });
       return result;
     },
-    { q: initialValue }
+    { q: undefined, sortBy: undefined }
   );
 
   return (
@@ -38,7 +38,15 @@ const SearchForm = ({
       role="search"
     >
       <Input placeholder={placeholder} name="q" defaultValue={state.q} aria-label="상품 검색" />
-      <Button type="submit" disabled={isPending}>
+      <CheckBoxButton name="sortBy" value="rating" className="w-[100px] h-[40px]">
+        별점순
+      </CheckBoxButton>
+      <Button
+        type="submit"
+        disabled={isPending}
+        size="large"
+        className="rounded-full mr-[10px] w-[150px]"
+      >
         검색
       </Button>
     </form>

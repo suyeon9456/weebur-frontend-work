@@ -7,9 +7,13 @@ const useSearchParamsUpdater = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const updateSearchParams = (updates: Record<string, string>) => {
+  const updateSearchParams = (updates: Record<string, string | undefined>) => {
     const params = new URLSearchParams(searchParams.toString());
     Object.entries(updates).forEach(([key, value]) => {
+      if (value === undefined) {
+        params.delete(key);
+        return;
+      }
       params.set(key, value);
     });
     router.replace(`${pathname}?${params.toString()}`);

@@ -55,4 +55,6 @@ export interface ProductLisRequest {
   skip: number;
   limit: number;
   q: string;
+  sortBy?: string;
+  order?: 'desc';
 }

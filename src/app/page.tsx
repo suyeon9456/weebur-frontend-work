@@ -1,14 +1,25 @@
 import { getProducts } from '@/lib/api/products';
 import Products from './Products';
+import { getSingleValue } from '@/lib/utils';
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const { q } = await searchParams;
-  const qValue = Array.isArray(q) ? q[0] : q;
-  const initialProducts = await getProducts({ skip: 0, limit: 20, q: qValue });
+type SearchParams = {
+  q?: string | string[];
+  sortBy?: string | string[];
+  order?: string | string[];
+};
+
+export default async function Home({ searchParams }: { searchParams: SearchParams }) {
+  const qValue = getSingleValue(searchParams.q);
+  const sortByValue = getSingleValue(searchParams.sortBy);
+  const orderValue = getSingleValue(searchParams.order);
+
+  const initialProducts = await getProducts({
+    skip: 0,
+    limit: 20,
+    q: qValue,
+    sortBy: sortByValue,
+    order: orderValue as 'desc',
+  });
 
   return (
     <div>
