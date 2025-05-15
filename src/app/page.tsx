@@ -1,5 +1,5 @@
 import { getProducts } from '@/lib/api/products';
-import Products from './Products';
+import Products from './components/Products';
 import { getSingleValue } from '@/lib/utils';
 
 type SearchParams = {
