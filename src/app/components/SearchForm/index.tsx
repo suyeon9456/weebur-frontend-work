@@ -3,7 +3,7 @@
 import Input from '@/components/Input';
 import useSearchParamsUpdater from '@/hooks/useSearchParamsUpdater';
 import { useActionState } from 'react';
-import { handleSearchAction } from '../actions/search';
+import { handleSearchAction } from '../../actions/search';
 import Button from '@/components/Button';
 import CheckBoxButton from '@/components/CheckBoxButton';
 interface SearchFormValues {
